@@ -183,14 +183,33 @@ def process_image(img):
 
 #### 1. Fill in the `perception_step()` (at the bottom of the `perception.py` script) and `decision_step()` (in `decision.py`) functions in the autonomous mapping scripts and an explanation is provided in the writeup of how and why these functions were modified as they were.
 
-With previous practice and learning, I fill up `perception_step()` with scriplets learnt previously. `decision_step()` pretty much pre-filled up with course material. 
+With previous practice and learning, I fill up `perception_step()` with scriplets learnt in `process_image()`. `decision_step()` prefilled with working sample.
 
 #### 2. Launching in autonomous mode your rover can navigate and map autonomously.  Explain your results and how you might improve them in your writeup.  
 
 **Note: running the simulator with different choices of resolution and graphics quality may produce different results, particularly on different machines!  Make a note of your simulator settings (resolution and graphics quality set on launch) and frames per second (FPS output to terminal by `drive_rover.py`) in your writeup when you submit the project so your reviewer can reproduce your results.**
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+I run the Simulator in resolution of 800x600 with "Good" graphics quality. The frame rate fluctuating in between 8 to 15 frames.
 
+I did following points during the autonomous simulation.
 
+- Double throttle_set to 0.4 to speed up simulation.
 
-![alt text][image3]
+- Double stop_forward and go_forward to compensate for faster throttle_set.
+```
+        self.stop_forward = 100 # Threshold to initiate stopping
+        self.go_forward = 1000 # Threshold to go forward again
+```
+
+- Filter obstacle x,y co-ordinates to avoid program error which stops the drive_rover.py
+
+```
+    oFilter = obstacle_y_world<200
+
+    obstacle_y_world = obstacle_y_world[oFilter]
+    obstacle_x_world = obstacle_x_world[oFilter]
+```
+
+- Remove framerate and data keys log to have easier tracing.
+
+The Project is definitely unfinished and I wonder how behavior cloning deep learning technique can optimize `decision_step()`.  
