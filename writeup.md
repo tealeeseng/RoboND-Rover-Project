@@ -1,5 +1,4 @@
 ## Project: Search and Sample Return
-### Writeup Template: You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
 
 ---
 
@@ -27,16 +26,12 @@
 [image3]: ./calibration_images/example_rock1.jpg
 [samples]: ./misc/samples.png
 [test_video]: https://img.youtube.com/vi/zY1S1NgmNZc/0.jpg
-
+[result]: ./misc/result-ok.png
 ## [Rubric](https://review.udacity.com/#!/rubrics/916/view) Points
 ### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
 
 ---
-### Writeup / README
 
-#### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one.  You can submit your writeup as markdown or pdf.  
-
-You're reading it!
 
 ### Notebook Analysis
 #### 1. Run the functions provided in the notebook on test images (first with the test data provided, next on data you have recorded). Add/modify functions to allow for color selection of obstacles and rock samples.
@@ -193,7 +188,7 @@ I run the Simulator in resolution of 800x600 with "Good" graphics quality. The f
 
 I did following points during the autonomous simulation.
 
-- Double throttle_set to 0.4 to speed up simulation.
+- Set throttle_set to 0.3 to speed up simulation.
 
 - Double stop_forward and go_forward to compensate for faster throttle_set.
 ```
@@ -210,6 +205,11 @@ I did following points during the autonomous simulation.
     obstacle_x_world = obstacle_x_world[oFilter]
 ```
 
-- Remove framerate and data keys log to have easier tracing.
+- Remove framerate and data keys logging to have easier tracing.
+
+At the end, the Simulator manages to achieve the minimum requirement of mapping 40% of area with 60% fidelity. It takes about 150 seconds to complete that task.
+
+![alt text][result]
+
 
 The Project is definitely unfinished and I wonder how behavior cloning deep learning technique can optimize `decision_step()`.  
