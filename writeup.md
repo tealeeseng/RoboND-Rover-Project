@@ -207,7 +207,10 @@ I did following points during the autonomous simulation.
 
 - Remove framerate and data keys logging to have easier tracing.
 
-At the end, the Simulator manages to achieve the minimum requirement of mapping 40% of area with 60% fidelity. It takes about 150 seconds to complete that task.
+- Reduce turning angle to 10 degree to reduce chance of self spinning on tunnel ends. Reset go_forward = 1000 as it was set to 3000 wrongly during commit. Thanks to reviewer for pointing that out.
+
+
+At the end, the Simulator manages to achieve the minimum requirement of mapping 40% of area with 60% fidelity. It takes about 200 seconds to complete that task.
 
 ![alt text][result]
 
